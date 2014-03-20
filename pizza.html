@@ -1,0 +1,38 @@
+<html>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<head>
+	<title></title>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript">
+google.load("visualization", "1", {packages:["corechart"]});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Tipo do gasto');
+    data.addColumn('number', 'Valor gasto');
+    data.addRows(4);
+    data.setValue(0, 0, 'Alimentação');
+    data.setValue(0, 1, 450);
+    data.setValue(1, 0, 'Combustível');
+    data.setValue(1, 1, 300);
+    data.setValue(2, 0, 'Família');
+    data.setValue(2, 1, 600);
+    data.setValue(3, 0, 'Saúde');
+    data.setValue(3, 1, 350);
+ 
+    var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+    chart.draw(data, {width: 450, height: 300, title: 'Tipos de gastos'});
+     
+    google.visualization.events.addListener(chart, 'select', avisaDoClique);    
+ 
+    function avisaDoClique(event)  {
+            document.getElementById('msg').innerHTML += "Clique efetuado! <br/>";
+    }
+  }
+	</script>
+</head>
+<body>
+<h1>Gastos por mês</h1>
+<div id="chart_div"></div>
+</body>
+</html>

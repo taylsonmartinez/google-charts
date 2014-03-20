@@ -1,0 +1,34 @@
+<html>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<head>
+	<title></title>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript">
+    google.load('visualization', '1', {packages:['intensitymap']});
+    google.setOnLoadCallback(desenhaGrafico);
+    function desenhaGrafico() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', '', 'País');
+      data.addColumn('number', 'Área (1000 km2)');
+        data.addColumn('number', 'População (mil)');
+      data.addRows(2);
+ 
+      data.setValue(0, 0, 'BR');//Brasil
+      data.setValue(0, 1, 8515);
+      data.setValue(0, 2, 190732);
+ 
+        data.setValue(1, 0, 'CO');//Colômbia
+      data.setValue(1, 1, 1138);
+      data.setValue(1, 2, 45986);
+ 
+                var div = document.getElementById('meu_grafico');
+      var grafico = new google.visualization.IntensityMap(div);
+      grafico.draw(data, {region: 'south_america', height: 300, width: 400});
+    }
+	</script>
+</head>
+<body>
+<h1>Gastos por mês</h1>
+<div id="meu_grafico"></div>
+</body>
+</html>
